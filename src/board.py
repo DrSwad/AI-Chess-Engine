@@ -53,3 +53,6 @@ class ChessBoard:
         for move in self.move_history:
             new_board.board.push(move)
         return new_board
+
+    def get_move_san(self, move: chess.Move) -> str:
+        return self.board.san(move)
