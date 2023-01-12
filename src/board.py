@@ -1,6 +1,6 @@
 import chess
 import numpy as np
-from typing import List
+from typing import List, Optional
 
 
 class ChessBoard:
@@ -33,6 +33,15 @@ class ChessBoard:
 
     def get_turn(self) -> bool:
         return self.board.turn
+
+    def is_checkmate(self) -> bool:
+        return self.board.is_checkmate()
+
+    def is_stalemate(self) -> bool:
+        return self.board.is_stalemate()
+
+    def get_piece_at(self, square: chess.Square) -> Optional[chess.Piece]:
+        return self.board.piece_at(square)
 
     def get_board_array(self) -> np.ndarray:
         board_array = np.zeros((8, 8), dtype=int)
