@@ -28,11 +28,19 @@ class ChessBoard:
     def is_game_over(self) -> bool:
         return self.board.is_game_over()
 
+    def get_winner(self) -> Optional[bool]:
+        if self.board.is_checkmate():
+            return not self.board.turn
+        return None
+
     def get_fen(self) -> str:
         return self.board.fen()
 
     def get_turn(self) -> bool:
         return self.board.turn
+
+    def is_check(self) -> bool:
+        return self.board.is_check()
 
     def is_checkmate(self) -> bool:
         return self.board.is_checkmate()
@@ -62,6 +70,9 @@ class ChessBoard:
         for move in self.move_history:
             new_board.board.push(move)
         return new_board
+
+    def get_move_uci(self, move: chess.Move) -> str:
+        return move.uci()
 
     def get_move_san(self, move: chess.Move) -> str:
         return self.board.san(move)
